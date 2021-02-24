@@ -4,7 +4,7 @@ import 'package:todo_app_firestore_example/utils.dart';
 
 class FirebaseApi {
   static Future<String> createTodo(Todo todo) async {
-    final docTodo = FirebaseFirestore.instance.collection('todo').doc();
+    final docTodo = FirebaseFirestore.instance.collection('todo').doc(); //instance firebase
 
     todo.id = docTodo.id;
     await docTodo.set(todo.toJson());

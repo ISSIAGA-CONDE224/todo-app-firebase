@@ -13,8 +13,7 @@ Future main() async {
 
 class MyApp extends StatelessWidget {
   static final String title = 'App de gestion de tâche';
-
-  @override
+  @override 
   Widget build(BuildContext context) => ChangeNotifierProvider(
         create: (context) => TodosProvider(),
         child: MaterialApp(
