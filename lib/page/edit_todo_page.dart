@@ -56,7 +56,6 @@ class _EditTodoPageState extends State<EditTodoPage> {
       return;
     } else {
       final provider = Provider.of<TodosProvider>(context, listen: false);
-
       provider.updateTodo(widget.todo, title, description);
 
       Navigator.of(context).pop();
