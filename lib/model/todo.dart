@@ -1,6 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:todo_app_firestore_example/utils.dart';
 
+
+
+
 class TodoField {
   static const createdTime = 'createdTime';
 }
@@ -19,7 +22,6 @@ class Todo {
     this.id,
     this.isDone = false,
   });
-
   static Todo fromJson(Map<String, dynamic> json) => Todo(
         createdTime: Utils.toDateTime(json['createdTime']),
         title: json['title'],

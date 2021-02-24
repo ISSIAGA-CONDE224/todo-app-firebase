@@ -5,6 +5,7 @@ import 'package:todo_app_firestore_example/page/home_page.dart';
 import 'package:todo_app_firestore_example/provider/todos.dart';
 
 Future main() async {
+  // initialisation de firebase
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
@@ -13,7 +14,7 @@ Future main() async {
 
 class MyApp extends StatelessWidget {
   static final String title = 'App de gestion de tâche';
-  @override 
+  @override
   Widget build(BuildContext context) => ChangeNotifierProvider(
         create: (context) => TodosProvider(),
         child: MaterialApp(

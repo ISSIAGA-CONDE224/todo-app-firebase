@@ -41,7 +41,11 @@ class TodoFormWidget extends StatelessWidget {
           return null;
         },
         decoration: InputDecoration(
-          border: UnderlineInputBorder(),
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              const Radius.circular(10.0),
+            ),
+          ),
           labelText: 'Nom de la tâche ici',
         ),
       );
@@ -51,19 +55,24 @@ class TodoFormWidget extends StatelessWidget {
         initialValue: description,
         onChanged: onChangedDescription,
         decoration: InputDecoration(
-          border: UnderlineInputBorder(),
+          border: OutlineInputBorder(
+            borderRadius: const BorderRadius.all(
+              const Radius.circular(10.0),
+            ),
+          ),
           labelText: 'Description de la tâche ici',
         ),
       );
 
   Widget buildButton() => SizedBox(
         width: double.infinity,
+        height: 50,
         child: ElevatedButton(
           style: ButtonStyle(
             backgroundColor: MaterialStateProperty.all(Colors.blueAccent),
           ),
           onPressed: onSavedTodo,
-          child: Text('Enregistrer'),
+          child: Text('Enregistrer'.toUpperCase()),
         ),
       );
 }

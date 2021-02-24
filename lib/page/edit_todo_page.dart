@@ -30,19 +30,8 @@ class _EditTodoPageState extends State<EditTodoPage> {
   @override
   Widget build(BuildContext context) => Scaffold(
         appBar: AppBar(
-          title: Text('Modifier la tâche'),
-          actions: [
-            IconButton(
-              icon: Icon(Icons.delete),
-              onPressed: () {
-                final provider =
-                    Provider.of<TodosProvider>(context, listen: false);
-                provider.removeTodo(widget.todo);
-
-                Navigator.of(context).pop();
-              },
-            )
-          ],
+          title: Text('Modifier la tâche'.toUpperCase()),
+          centerTitle: true,
         ),
         body: Padding(
           padding: EdgeInsets.all(16),

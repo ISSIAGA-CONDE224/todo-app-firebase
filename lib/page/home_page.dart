@@ -26,7 +26,8 @@ class _HomePageState extends State<HomePage> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(MyApp.title),
+        title: Text(MyApp.title.toUpperCase()),
+        centerTitle: true,
       ),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).primaryColor,

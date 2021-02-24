@@ -4,14 +4,15 @@ import 'package:todo_app_firestore_example/utils.dart';
 
 class FirebaseApi {
   static Future<String> createTodo(Todo todo) async {
-    final docTodo = FirebaseFirestore.instance.collection('todo').doc(); //instance firebase
+    final docTodo =
+        FirebaseFirestore.instance.collection('todo').doc(); //instance firebase
 
     todo.id = docTodo.id;
     await docTodo.set(todo.toJson());
-
     return docTodo.id;
   }
 
+// methode de lecture 
   static Stream<List<Todo>> readTodos() => FirebaseFirestore.instance
       .collection('todo')
       .orderBy(TodoField.createdTime, descending: true)
@@ -20,13 +21,11 @@ class FirebaseApi {
 
   static Future updateTodo(Todo todo) async {
     final docTodo = FirebaseFirestore.instance.collection('todo').doc(todo.id);
-
     await docTodo.update(todo.toJson());
   }
 
   static Future deleteTodo(Todo todo) async {
     final docTodo = FirebaseFirestore.instance.collection('todo').doc(todo.id);
-
     await docTodo.delete();
   }
 }
