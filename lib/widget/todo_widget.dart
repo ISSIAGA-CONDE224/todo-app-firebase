@@ -96,61 +96,63 @@ class TodoWidget extends StatelessWidget {
       );
 
   Widget buildTodo(BuildContext context) => Container(
-    color: Colors.white,
-    padding: EdgeInsets.all(20),
-    child: Row(
-      children: [
-        Checkbox(
-          activeColor: Theme.of(context).primaryColor,
-          checkColor: Colors.white,
-          value: todo.isDone,
-          onChanged: (_) {
-            final provider =
-                Provider.of<TodosProvider>(context, listen: false);
-            final isDone = provider.toggleTodoStatus(todo);
+        color: Colors.white,
+        padding: EdgeInsets.all(20),
+        child: Row(
+          children: [
+            Checkbox(
+              activeColor: Theme.of(context).primaryColor,
+              checkColor: Colors.white,
+              value: todo.isDone,
+              onChanged: (_) {
+                final provider =
+                    Provider.of<TodosProvider>(context, listen: false);
+                final isDone = provider.toggleTodoStatus(todo);
 
-            Utils.showSnackBar(
-              context,
-              isDone
-                  ? 'Tâches terminée avec succes'
-                  : 'Tâche non terminée',
-            );
-          },
-        ),
-        const SizedBox(width: 20),
-        Expanded(
-          child: Column(
-            children: [
-              !todo.isDone
-                  ? Text(
-                      todo.title,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.black,
-                          fontSize: 22),
+                Utils.showSnackBar(
+                  context,
+                  isDone ? 'Tâches terminée avec succes' : 'Tâche non terminée',
+                );
+              },
+            ),
+            const SizedBox(width: 20),
+            Expanded(
+              child: Column(
+                children: [
+                  !todo.isDone
+                      ? Text(
+                          todo.title,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.black,
+                              fontSize: 22),
+                        )
+                      : Text(
+                          todo.title,
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color: Colors.grey,
+                              decoration: TextDecoration.lineThrough,
+                              fontSize: 22),
+                        ),
+                  if (todo.description.isNotEmpty)
+                    Container(
+                      width: 500,
+                      color: Colors.blueGrey,
+                      margin: EdgeInsets.only(top: 4),
+                      padding: EdgeInsets.only(left: 20),
+                      child: Text(
+                        todo.description,
+                        style: TextStyle(
+                            fontSize: 20, height: 1.5, color: Colors.white),
+                      ),
                     )
-                  : Text(
-                      todo.title,
-                      style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey,
-                          decoration: TextDecoration.lineThrough,
-                          fontSize: 22),
-                    ),
-              if (todo.description.isNotEmpty)
-                Container(
-                  margin: EdgeInsets.only(top: 4),
-                  child: Text(
-                    todo.description,
-                    style: TextStyle(fontSize: 20, height: 1.5),
-                  ),
-                )
-            ],
-          ),
+                ],
+              ),
+            ),
+          ],
         ),
-      ],
-    ),
-  );
+      );
 
   void deleteTodo(BuildContext context, Todo todo) {
     final provider = Provider.of<TodosProvider>(context, listen: false);

@@ -22,6 +22,7 @@ class Todo {
     this.id,
     this.isDone = false,
   });
+  //La transformation des données de firebase vers lapplication
   static Todo fromJson(Map<String, dynamic> json) => Todo(
         createdTime: Utils.toDateTime(json['createdTime']),
         title: json['title'],
@@ -29,7 +30,7 @@ class Todo {
         id: json['id'],
         isDone: json['isDone'],
       );
-
+//La transformation des données de l'application vers fire base
   Map<String, dynamic> toJson() => {
         'createdTime': Utils.fromDateTimeToJson(createdTime),
         'title': title,

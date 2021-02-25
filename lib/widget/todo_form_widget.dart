@@ -60,7 +60,7 @@ class TodoFormWidget extends StatelessWidget {
               const Radius.circular(10.0),
             ),
           ),
-          labelText: 'Description de la tâche ici',
+          labelText: 'Les differentes sous tâches',
         ),
       );
 
